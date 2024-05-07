@@ -53,14 +53,13 @@ const FlatListWithPg: React.FC = () => {
     </View>
   );
 
-  const keyExtractor = (item: Item, index: number) => `${item.id}_${index}`;
   return (
     <SafeAreaView>
       <Text style={styles.titleStyle}> FlatList With Pagination</Text>
       <FlatList
         data={data}
         renderItem={renderItem}
-        keyExtractor={keyExtractor}
+        keyExtractor={(item, index) => index.toString()}
         onEndReached={() => {
           console.log('page: ', page, ' -- hasMore: ', hasMore);
           if (hasMore) {
